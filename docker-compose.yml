@@ -20,3 +20,12 @@ services:
     volumes:
       - .:/app
     command: python api_server.py
+
+  telegram-bot:
+    build: .
+    container_name: bonde-telegram-bot
+    restart: always
+    env_file: .env
+    volumes:
+      - .:/app
+    command: python v6_ultimate_secretary.py

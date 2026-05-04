@@ -19,3 +19,5 @@ python-dotenv
 toml
 fastapi
 uvicorn
+python-telegram-bot[job-queue]
+pytz
