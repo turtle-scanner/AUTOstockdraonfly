@@ -28,4 +28,4 @@ services:
     env_file: .env
     volumes:
       - .:/app
-    command: python v6_ultimate_secretary.py
+    command: python v7_bonde_master_bot.py
