@@ -1,0 +1,22 @@
+# KIS API 설정 파일 (Unified)
+my_app: "PSzuu6dcYxkkHvTyAXm61J1Zta6oBrSZHoaq"
+my_sec: "H5dGS5kHK3AbpskI0E0ovYAL6aS82Li/4SioJGlLK6ypvlc3ejf1NNpbwkxTpsuO81mhqEFOW62OaFSCRtd/J9/v8c5WVKOf0uMigMblMeMI1riXUaeVf+LuBnSE+kXN1OEkn1MBlQ2GiLd4tFBEEQxOH/cQgFf0YaU2Q1S5OeHnecRCcuQ="
+
+paper_app: "PSzuu6dcYxkkHvTyAXm61J1Zta6oBrSZHoaq"
+paper_sec: "H5dGS5kHK3AbpskI0E0ovYAL6aS82Li/4SioJGlLK6ypvlc3ejf1NNpbwkxTpsuO81mhqEFOW62OaFSCRtd/J9/v8c5WVKOf0uMigMblMeMI1riXUaeVf+LuBnSE+kXN1OEkn1MBlQ2GiLd4tFBEEQxOH/cQgFf0YaU2Q1S5OeHnecRCcuQ="
+
+my_htsid: "USER_HTS_ID"
+my_acct_stock: "46546713"
+my_paper_stock: "46546713"
+my_acct_future: "46546713"
+my_paper_future: "46546713"
+my_prod: "01"
+
+# Domain info
+prod: "https://openapi.koreainvestment.com:9443"
+vps: "https://openapivts.koreainvestment.com:29443"
+ops: "ws://ops.koreainvestment.com:21000"
+vops: "ws://ops.koreainvestment.com:31000"
+
+# User-Agent
+my_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"

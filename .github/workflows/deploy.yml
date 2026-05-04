@@ -1,0 +1,40 @@
+name: AWS EC2 Auto Deployment
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy to EC2 via SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd ~/auto-bonde-bot/trading_bot
+          git pull origin main
+          docker-compose down
+          docker-compose up -d --build
+          echo "Deployment successful on $(date)"
+
+    - name: Send Telegram Notification
+      if: success()
+      run: |
+        curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+        -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+        -d text="🚀 [AWS DEPLOY] 배포 성공!%0A✅ 서버: AWS EC2%0A✅ 경로: /v6-api/%0A✅ 시간: $(date +'%Y-%m-%d %H:%M:%S')"
+
+    - name: Send Telegram Failure Notification
+      if: failure()
+      run: |
+        curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+        -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+        -d text="❌ [AWS DEPLOY] 배포 실패!%0A⚠️ 로그를 확인해주세요."

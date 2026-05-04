@@ -1,0 +1,302 @@
+[
+    {
+        "code": "184230",
+        "name": "SGA솔루션즈",
+        "rs_score": 646.9,
+        "rs_percentile": 98.9,
+        "roe": 40,
+        "sector_momentum": "시장 주도주 (Top 5% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "010120",
+        "name": "LS ELECTRIC",
+        "rs_score": 417.9,
+        "rs_percentile": 98.1,
+        "roe": 14.7,
+        "sector_momentum": "시장 주도주 (Top 5% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "000500",
+        "name": "가온전선",
+        "rs_score": 388.7,
+        "rs_percentile": 97.9,
+        "roe": 11.0,
+        "sector_momentum": "시장 주도주 (Top 5% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "187790",
+        "name": "나노",
+        "rs_score": 332.2,
+        "rs_percentile": 96.0,
+        "roe": 19,
+        "sector_momentum": "시장 주도주 (Top 5% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "103590",
+        "name": "일진전기",
+        "rs_score": 323.8,
+        "rs_percentile": 95.8,
+        "roe": 19.1,
+        "sector_momentum": "시장 주도주 (Top 5% RS)",
+        "reason": "모멘텀 돌파: 16.7% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "080220",
+        "name": "제주반도체",
+        "rs_score": 272.2,
+        "rs_percentile": 92.8,
+        "roe": 19,
+        "sector_momentum": "강세 섹터 (Top 15% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "003720",
+        "name": "삼영",
+        "rs_score": 258.1,
+        "rs_percentile": 90.9,
+        "roe": 16.6,
+        "sector_momentum": "강세 섹터 (Top 15% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "072950",
+        "name": "빛샘전자",
+        "rs_score": 256.8,
+        "rs_percentile": 90.7,
+        "roe": 10,
+        "sector_momentum": "강세 섹터 (Top 15% RS)",
+        "reason": "모멘텀 돌파: 9.0% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "332570",
+        "name": "PS일렉트로닉스",
+        "rs_score": 235.4,
+        "rs_percentile": 88.8,
+        "roe": 20,
+        "sector_momentum": "강세 섹터 (Top 15% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "067310",
+        "name": "하나마이크론",
+        "rs_score": 231.7,
+        "rs_percentile": 88.6,
+        "roe": 10,
+        "sector_momentum": "강세 섹터 (Top 15% RS)",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "035890",
+        "name": "서희건설",
+        "rs_score": 231.4,
+        "rs_percentile": 88.4,
+        "roe": 12,
+        "sector_momentum": "강세 섹터 (Top 15% RS)",
+        "reason": "모멘텀 돌파: 132.3% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "094820",
+        "name": "일진파워",
+        "rs_score": 195.6,
+        "rs_percentile": 83.8,
+        "roe": 13,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 7.4% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "016360",
+        "name": "삼성증권",
+        "rs_score": 191.2,
+        "rs_percentile": 83.6,
+        "roe": 13.1,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 27.4% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "059090",
+        "name": "미코",
+        "rs_score": 179.9,
+        "rs_percentile": 80.6,
+        "roe": 27,
+        "sector_momentum": "일반",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "078150",
+        "name": "HB테크놀러지",
+        "rs_score": 154.9,
+        "rs_percentile": 74.5,
+        "roe": 10,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 8.9% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "039830",
+        "name": "오로라",
+        "rs_score": 145.6,
+        "rs_percentile": 70.3,
+        "roe": 13,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 8.8% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "003100",
+        "name": "선광",
+        "rs_score": 145.6,
+        "rs_percentile": 70.1,
+        "roe": 10,
+        "sector_momentum": "일반",
+        "reason": "지연 반응 돌파 (EP 전고점 상향 돌파)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "002810",
+        "name": "삼영무역",
+        "rs_score": 135.8,
+        "rs_percentile": 63.2,
+        "roe": 10.1,
+        "sector_momentum": "일반",
+        "reason": "High Tightness (Vol: 11.4%, BBW: 13.0%, VolDry: 58.4%)",
+        "status": "WATCHING (VCP)"
+    },
+    {
+        "code": "009180",
+        "name": "한솔로지스틱스",
+        "rs_score": 131.0,
+        "rs_percentile": 59.2,
+        "roe": 11.6,
+        "sector_momentum": "일반",
+        "reason": "High Tightness (Vol: 11.5%, BBW: 13.6%, VolDry: 41.1%)",
+        "status": "WATCHING (VCP)"
+    },
+    {
+        "code": "173130",
+        "name": "오파스넷",
+        "rs_score": 128.7,
+        "rs_percentile": 56.8,
+        "roe": 21,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 6.9% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "079900",
+        "name": "전진건설로봇",
+        "rs_score": 128.7,
+        "rs_percentile": 56.6,
+        "roe": 20.6,
+        "sector_momentum": "일반",
+        "reason": "High Tightness (Vol: 11.2%, BBW: 22.9%, VolDry: 41.0%)",
+        "status": "WATCHING (VCP)"
+    },
+    {
+        "code": "001560",
+        "name": "제일연마",
+        "rs_score": 128.5,
+        "rs_percentile": 56.2,
+        "roe": 13.1,
+        "sector_momentum": "일반",
+        "reason": "High Tightness (Vol: 11.6%, BBW: 15.5%, VolDry: 43.3%)",
+        "status": "WATCHING (VCP)"
+    },
+    {
+        "code": "030720",
+        "name": "동원수산",
+        "rs_score": 126.7,
+        "rs_percentile": 54.7,
+        "roe": 14.7,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 7.6% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "096760",
+        "name": "JW홀딩스",
+        "rs_score": 125.9,
+        "rs_percentile": 54.3,
+        "roe": 23.6,
+        "sector_momentum": "일반",
+        "reason": "High Tightness (Vol: 7.7%, BBW: 14.8%, VolDry: 55.5%)",
+        "status": "WATCHING (VCP)"
+    },
+    {
+        "code": "088910",
+        "name": "동우팜투테이블",
+        "rs_score": 124.7,
+        "rs_percentile": 53.3,
+        "roe": 13,
+        "sector_momentum": "일반",
+        "reason": "High Tightness (Vol: 8.3%, BBW: 10.1%, VolDry: 52.8%)",
+        "status": "WATCHING (VCP)"
+    },
+    {
+        "code": "031820",
+        "name": "아이티센씨티에스",
+        "rs_score": 123.5,
+        "rs_percentile": 52.4,
+        "roe": 25.9,
+        "sector_momentum": "일반",
+        "reason": "VCP Tightness & 거래량 Dry-up (에너지 응축 완료)",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "025880",
+        "name": "케이씨피드",
+        "rs_score": 115.5,
+        "rs_percentile": 44.4,
+        "roe": 14,
+        "sector_momentum": "일반",
+        "reason": "High Tightness (Vol: 5.4%, BBW: 7.8%, VolDry: 28.8%)",
+        "status": "WATCHING (VCP)"
+    },
+    {
+        "code": "383220",
+        "name": "F&F",
+        "rs_score": 111.9,
+        "rs_percentile": 40.2,
+        "roe": 23.2,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 13.6% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "479960",
+        "name": "위너스일렉",
+        "rs_score": 111.5,
+        "rs_percentile": 39.6,
+        "roe": 10,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 15.5% 급등",
+        "status": "BUY NOW"
+    },
+    {
+        "code": "009320",
+        "name": "아진전자부품",
+        "rs_score": 110.1,
+        "rs_percentile": 37.9,
+        "roe": 14.0,
+        "sector_momentum": "일반",
+        "reason": "모멘텀 돌파: 4.8% 급등",
+        "status": "BUY NOW"
+    }
+]

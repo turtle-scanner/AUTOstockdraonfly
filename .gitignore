@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Logs
+*.log
+bonde_bot_v*.log
+
+# Data
+*.json
+!bonde_watchlist.json
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+*.pem
+*.key
+
