@@ -57,7 +57,7 @@ def execute_bonde_scan(market: str) -> str:
 
 # --- 2. 제미나이 설정 ---
 # 제미나이 키 (지휘관님 요청에 따라 직접 삽입하여 403 에러 해결)
-GEMINI_API_KEY = "AIzaSyD6YAPguDkM-0tC9dDOsCNDuNQHeq15zXU"
+GEMINI_API_KEY = "AIzaSyBEm692ZnxgNImYVHnzBSvXQ7JAfjl4ox0"
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
