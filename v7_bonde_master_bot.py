@@ -43,7 +43,7 @@ load_dotenv()
 # 사용자가 제공한 토큰 및 계좌번호 (보안을 위해 .env 사용 권장)
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "8728920940:AAFenbR2SNCFe3m7w4b-_yLG2zoS_cTC3s0")
 ACC_NO = os.environ.get("KIS_ACCOUNT_NO", "4654671301")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyBEm692ZnxgNImYVHnzBSvXQ7JAfjl4ox0")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyCI-jv6dkuI_ZzA4HqmVqy3kd3wC6lO6rw")
 
 # 제미나이 설정
 genai.configure(api_key=GEMINI_API_KEY)
