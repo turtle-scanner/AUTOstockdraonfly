@@ -56,7 +56,8 @@ def execute_bonde_scan(market: str) -> str:
         return "[미국 본데 EP 스캔 결과] 당일 900만주 터진 대장주: PLTR +8%, SMCI +5% 포착"
 
 # --- 2. 제미나이 설정 ---
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+# 제미나이 키 (지휘관님 요청에 따라 직접 삽입하여 403 에러 해결)
+GEMINI_API_KEY = "AIzaSyD6YAPguDkM-0tC9dDOsCNDuNQHeq15zXU"
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
