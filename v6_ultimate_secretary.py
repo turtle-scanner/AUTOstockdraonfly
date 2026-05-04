@@ -63,8 +63,9 @@ TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 genai.configure(api_key=GEMINI_API_KEY)
 # Gemini 1.5 Pro 모델에 도구(함수) 제공
+# Gemini 1.5 Flash 모델로 변경 (더 빠르고 안정적이며 API 키 호환성이 높음)
 model = genai.GenerativeModel(
-    'gemini-1.5-pro',
+    'gemini-1.5-flash',
     tools=[buy_stock, sell_stock, get_account_balance, execute_bonde_scan]
 )
 
@@ -90,7 +91,7 @@ chat_sessions = {}
 
 def get_chat_session(chat_id):
     if chat_id not in chat_sessions:
-        # enable_automatic_function_calling=True 설정으로 제미나이가 알아서 파이썬 함수를 호출함!
+        # 자동 함수 호출 활성화
         chat_sessions[chat_id] = model.start_chat(history=[], enable_automatic_function_calling=True)
     return chat_sessions[chat_id]
 
@@ -123,14 +124,14 @@ async def handle_voice_message(update: Update, context: ContextTypes.DEFAULT_TYP
     await voice_file.download_to_drive(file_path)
     
     try:
-        # 제미나이 멀티모달 능력을 사용하여 음성 파일을 직접 이해
-        uploaded_audio = genai.upload_file(path=file_path)
+        # mime_type 명시하여 400 에러 방지
+        uploaded_audio = genai.upload_file(path=file_path, mime_type='audio/ogg')
         session = get_chat_session(update.effective_chat.id)
         
-        response = session.send_message([uploaded_audio, f"{SYSTEM_PROMPT}\n\n[음성 명령 수신됨]"])
+        response = session.send_message([uploaded_audio, f"{SYSTEM_PROMPT}\n\n지휘관님의 음성 명령을 수신했습니다. 요청하신 내용을 확인하고 보고하세요."])
         await text_to_speech_and_send(update, context, response.text)
     except Exception as e:
-        await update.message.reply_text(f"⚠️ 음성 인식 오류: {str(e)}")
+        await update.message.reply_text(f"⚠️ 음성 인식 오류 (400 발생 가능성): {str(e)}")
     finally:
         if os.path.exists(file_path):
             os.remove(file_path)
