@@ -5,6 +5,7 @@ import json
 from datetime import datetime
 import pytz
 import google.generativeai as genai
+import re
 from telegram import ReplyKeyboardMarkup, Update, ReplyKeyboardRemove
 from telegram.ext import (
     ApplicationBuilder,
@@ -14,6 +15,19 @@ from telegram.ext import (
     ContextTypes,
 )
 from dotenv import load_dotenv
+
+# 실계좌 연동용 모듈 임포트
+try:
+    from headless_dragonfly_bot import (
+        get_kis_access_token, 
+        get_total_assets, 
+        get_detailed_holdings, 
+        execute_kis_market_order
+    )
+    REAL_TRADING_ENABLED = True
+except ImportError:
+    REAL_TRADING_ENABLED = False
+    print("⚠️ headless_dragonfly_bot 모듈을 찾을 수 없어 모의 모드로 동작합니다.")
 
 # 로깅 설정
 logging.basicConfig(
@@ -97,18 +111,38 @@ async def scan_us(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 # --- 3. 계좌 및 수익률 조회 ---
 async def check_account(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # 실제 KIS API 연동 전까지는 Mock 데이터 또는 kis_auth 기반 정보 활용
-    # 여기서는 사용자 요청대로 계좌번호와 샘플 수익률 표시
-    await update.message.reply_text(
-        f"💳 [계좌 정보 조회]\n"
-        f"계좌번호: {ACC_NO}\n"
-        f"현재 총 자산: 52,400,000 KRW\n"
-        f"당일 실현 손익: +1,250,000 KRW (+2.4%)\n\n"
-        f"보유 종목:\n"
-        f"1. NVDA: 10주 (+15.4%)\n"
-        f"2. 삼성전자: 100주 (-1.2%)\n"
-        f"3. 에코프로: 20주 (+5.7%)"
-    )
+    if not REAL_TRADING_ENABLED:
+        await update.message.reply_text("⚠️ 실계좌 연동 모듈이 없어 모의 데이터를 표시합니다.")
+        # (기존 Mock 데이터 유지)
+        await update.message.reply_text(
+            f"💳 [계좌 정보 조회 - MOCK]\n계좌번호: {ACC_NO}\n현재 총 자산: 52,400,000 KRW\n보유 종목: NVDA 10주 (+15.4%)"
+        )
+        return
+
+    await update.message.reply_text("⏳ 실시간 계좌 정보를 서버에서 불러오고 있습니다...")
+    try:
+        token = get_kis_access_token()
+        if not token:
+            await update.message.reply_text("❌ KIS 인증 실패. API 키를 확인하세요.")
+            return
+
+        total_assets = get_total_assets(token)
+        holdings = get_detailed_holdings(token)
+
+        report = f"💳 [실시간 계좌 보고]\n"
+        report += f"계좌번호: {ACC_NO}\n"
+        report += f"총 평가 자산: {total_assets:,.0f}원\n\n"
+        
+        if holdings:
+            report += "📂 [보유 종목 현황]\n"
+            for h in holdings:
+                report += f"📍 {h['ticker']}: {h['qty']}주 ({h['roi']}% / {h['curr_p']:,}원)\n"
+        else:
+            report += "현재 보유 중인 종목이 없습니다."
+        
+        await update.message.reply_text(report)
+    except Exception as e:
+        await update.message.reply_text(f"⚠️ 계좌 조회 중 오류 발생: {str(e)}")
 
 # --- 4 & 5. 시황 요약 ---
 async def market_summary(update: Update, context: ContextTypes.DEFAULT_TYPE, market="국내"):
@@ -122,15 +156,38 @@ async def market_summary(update: Update, context: ContextTypes.DEFAULT_TYPE, mar
 
 # --- 6. 매매 실행 ---
 async def execute_trade(update: Update, context: ContextTypes.DEFAULT_TYPE, command_text: str):
-    # 형식: "종목명 수량 가격" (예: 삼성전자 10 75000)
+    # 형식: "종목명 수량 가격" (현재 시장가 매매 위주이므로 가격은 참고용 또는 생략 가능)
+    # 예: "NVDA 1 매수" 또는 "삼성전자 10 매도"
     parts = command_text.split()
-    if len(parts) >= 3:
-        name = parts[0]
-        qty = parts[1]
-        price = parts[2]
-        await update.message.reply_text(f"🚀 [매매 명령 수신]\n종목: {name}\n수량: {qty}\n가격: {price}\n\n'본데' 원칙에 따라 리스크 검토 후 주문을 전송합니다. (현재는 시뮬레이션 모드)")
-    else:
-        await update.message.reply_text("⚠️ 매매 명령 형식이 올바르지 않습니다.\n예: 삼성전자 10 75000")
+    if len(parts) < 2:
+        await update.message.reply_text("⚠️ 매매 명령 형식이 올바르지 않습니다.\n예: [티커 수량 매수/매도]")
+        return
+
+    ticker = parts[0].upper()
+    try:
+        qty = int(re.search(r'\d+', parts[1]).group())
+    except:
+        await update.message.reply_text("⚠️ 수량을 숫자로 입력해 주세요.")
+        return
+
+    is_buy = "매수" in command_text or "buy" in command_text.lower()
+    action_str = "매수" if is_buy else "매도"
+
+    await update.message.reply_text(f"🚀 {ticker} {qty}주 {action_str} 주문을 전송합니다...")
+
+    if not REAL_TRADING_ENABLED:
+        await update.message.reply_text(f"⚠️ [MOCK] {ticker} {qty}주 {action_str} 주문이 가상으로 완료되었습니다.")
+        return
+
+    try:
+        token = get_kis_access_token()
+        success = execute_kis_market_order(ticker, qty, is_buy, token)
+        if success:
+            await update.message.reply_text(f"✅ {ticker} {qty}주 {action_str} 주문 성공!")
+        else:
+            await update.message.reply_text(f"❌ {ticker} {action_str} 주문 실패. 로그를 확인하세요.")
+    except Exception as e:
+        await update.message.reply_text(f"⚠️ 주문 중 오류 발생: {str(e)}")
 
 # --- 핸들러 ---
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
